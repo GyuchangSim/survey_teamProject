@@ -1,6 +1,7 @@
 # 📖 설문조사 웹사이트 설문할래
 
-![readme_mockup2](https://raw.githubusercontent.com/survey-project-2024-05-07/survey-project/main/img/%EA%B0%9C%EB%B0%9C%ED%95%A0%EB%9E%98%20%EB%A9%94%EC%9D%B8.png?token=GHSAT0AAAAAACTQSMXFIPIOCKQOEMDRBOKKZTUGADA)
+![개발할래 메인](https://github.com/survey-project-2024-05-07/survey-project/assets/152495943/3f6ae705-e55a-4976-8c64-661cbb08161f)
+
 
 
 
@@ -8,7 +9,7 @@
 
 ## 프로젝트 개요
 
-![readme_mockup2](https://raw.githubusercontent.com/survey-project-2024-05-07/survey-project/main/img/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%20%EA%B0%9C%EC%9A%94.png?token=GHSAT0AAAAAACTQSMXELAX2G7F65T6WKWSIZTUGBCA)
+![프로젝트 개요](https://github.com/survey-project-2024-05-07/survey-project/assets/152495943/c58986de-1f83-4391-81a9-3583ba0bd61c)
 
 <br>
 
@@ -18,7 +19,9 @@
 
 | **심규창** | **신지영** | **최소윤** | **김예찬** |
 | :------: |  :------: | :------: | :------: |
-| [<img src="https://avatars.githubusercontent.com/u/152495943?s=400&u=a43dcb0f007f74688b36c21b6e3884032699f9bb&v=4" height=150 width=150> <br/> @GyuchangSim](https://github.com/GyuchangSim) | [<img src="https://avatars.githubusercontent.com/u/112460466?v=4" height=150 width=150> <br/> @Cheorizzang](https://github.com/Cheorizzang) | [<img src="https://avatars.githubusercontent.com/u/112460506?v=4" height=150 width=150> <br/> @heejiyang](https://github.com/heejiyang) | [<img src="https://avatars.githubusercontent.com/u/76766459?v=4" height=150 width=150> <br/> @journey-ji](https://github.com/journey-ji) |https://avatars.githubusercontent.com/u/155707838?v=4
+| [<img src="https://avatars.githubusercontent.com/u/152495943?s=400&u=a43dcb0f007f74688b36c21b6e3884032699f9bb&v=4" height=150 width=150> <br/> @GyuchangSim](https://github.com/GyuchangSim) | [<img src="https://avatars.githubusercontent.com/u/155707838?v=4" height=150 width=150> <br/> @JJJI0](https://github.com/JJJI0) | [<img src="https://avatars.githubusercontent.com/u/169155232?v=4" height=150 width=150> <br/> @sooyun3451](https://github.com/sooyun3451) | [<img src="https://avatars.githubusercontent.com/u/147054139?v=4" height=150 width=150> <br/> @kyc3610](https://github.com/kyc3610) |
+
+
 </div>
 
 <br>
@@ -138,7 +141,17 @@
 
 <br>
 
-## 6. 트러블 슈팅
+## 6. 에러 해결
+1) 에러 : 설문조사를 불어올 때, 모든 설문이 나눠지지 않고 하나로 뭉쳐져서 나왔습니다. <br>
+   원인 : forEach문을 하나로 묶어 돌려서 생긴 에러였습니다.<br>
+   해결책 : 설문제목은 surveyCode로 불러오고 나머지 디테일 설문들은 따로 forEach문을 돌리니
+            해결됐습니다.
+
+2) 에러 : 메인 페이지 인기설문을 불러오는 것을 실패했습니다. <br>
+   원인 : xml에surveyCode를 추가한 뒤로 생긴 오류라 surveyCode가 문제라 생각했습니다. <br>
+                 유심히 살펴보니 순서를 잘못 배치하여 xml에 survey_title을 dto의 surveyCode로 읽어서 나는 에러였습니다. <br>
+   해결책 :  xml과 dto의 순서를 맞춰주니 해결되었습니다.
+
 
 ## 7. 페이지별 기능
 
@@ -149,7 +162,7 @@
 
 | 메인화면 |
 |----------|
-|![splash](![Alt text](https://raw.githubusercontent.com/survey-project-2024-05-07/survey-project/main/img/%EA%B0%9C%EB%B0%9C%ED%95%A0%EB%9E%98%20%EB%A9%94%EC%9D%B8.png?token=GHSAT0AAAAAACTQSMXF2THXZG6GOH2ZAIGSZTUGCUQ))|
+![개발할래 메인](https://github.com/survey-project-2024-05-07/survey-project/assets/152495943/5de7b0e3-87df-4011-adbc-3ddad39f1b97)
 
 <br>
 
@@ -160,7 +173,7 @@
 
 | 회원가입 |
 |----------|
-|![join](![Alt text](https://raw.githubusercontent.com/survey-project-2024-05-07/survey-project/main/img/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85.png?token=GHSAT0AAAAAACTQSMXFE4LXM5P2MHYUBMLMZTUFRCA))|
+<img width="1280" alt="회원가입" src="https://github.com/survey-project-2024-05-07/survey-project/assets/152495943/cd3127d4-a9c8-4f63-a8f0-a07921b7d377">
 
 <br>
 
@@ -173,7 +186,7 @@
 
 | 로그인 |
 |----------|
-|![login](![Alt text](https://raw.githubusercontent.com/survey-project-2024-05-07/survey-project/main/img/%EB%A1%9C%EA%B7%B8%EC%9D%B8.png?token=GHSAT0AAAAAACTQSMXFDBXE4C5RTPLK5RNKZTUFPWQ))|
+<img width="1279" alt="로그인" src="https://github.com/survey-project-2024-05-07/survey-project/assets/152495943/a0813c20-96d4-4d2c-b958-44ba2f6e29df">
 
 <br>
 
@@ -197,10 +210,11 @@
 
 | 설문조사 |
 |----------|
-|![Alt text](https://raw.githubusercontent.com/survey-project-2024-05-07/survey-project/main/img/%EC%84%A4%EB%AC%B8%EC%A1%B0%EC%82%AC1.png?token=GHSAT0AAAAAACTQSMXEXLZX3Z4VBTEIXTXGZTUFRVA)|
-|![Alt text](https://raw.githubusercontent.com/survey-project-2024-05-07/survey-project/main/img/%EC%84%A4%EB%AC%B8%EC%A1%B0%EC%82%AC3.png?token=GHSAT0AAAAAACTQSMXEV2PJ3QN7TGK2BVFKZTUFSKQ)|
-|![Alt text](https://raw.githubusercontent.com/survey-project-2024-05-07/survey-project/main/img/%EC%84%A4%EB%AC%B8%EC%A1%B0%EC%82%AC0.png?token=GHSAT0AAAAAACTQSMXF3S2G5KWHHB3ZP7BOZTUFWEQ)|
-![Alt text](%EC%84%A4%EB%AC%B8%EC%A1%B0%EC%82%AC0.png)
+
+<img width="1280" alt="설문조사1" src="https://github.com/survey-project-2024-05-07/survey-project/assets/152495943/caa00963-6fa7-421c-9b10-da92d9d432aa">
+<img width="1280" alt="설문조사2" src="https://github.com/survey-project-2024-05-07/survey-project/assets/152495943/437fad44-d82f-42b0-980c-052705f6d9d9">
+<img width="1280" alt="설문조사3" src="https://github.com/survey-project-2024-05-07/survey-project/assets/152495943/3ee95625-29d5-46f3-b2cd-b528b4bb23a8">
+<img width="1280" alt="설문조사4" src="https://github.com/user-attachments/assets/ea9ebaf7-8e05-495f-8be3-ed9ae1fb9d1c">
 
 <br>
 
@@ -219,10 +233,15 @@
 
 | 설문신청 시작 | 설문지 작성 |
 |----------|----------|
-![Alt text](https://raw.githubusercontent.com/survey-project-2024-05-07/survey-project/main/img/%EC%84%A4%EB%AC%B8%EC%8B%A0%EC%B2%AD1.png?token=GHSAT0AAAAAACTQSMXEPZDI4YWEFXERHMU6ZTUFYUA)|![Alt text](https://raw.githubusercontent.com/survey-project-2024-05-07/survey-project/main/img/%EC%84%A4%EB%AC%B8%EC%8B%A0%EC%B2%AD2.png?token=GHSAT0AAAAAACTQSMXE4IMF4YVWVNB73Q6YZTUFZCQ)
+<img width="1280" alt="설문신청1" src="https://github.com/survey-project-2024-05-07/survey-project/assets/152495943/53820c0d-d21a-45ab-9779-03164909f15e">
+<img width="1280" alt="설문신청2" src="https://github.com/survey-project-2024-05-07/survey-project/assets/152495943/818a513c-9e3a-4b0d-9b46-a5b97b240ef1">
+<img width="1280" alt="설문신청3" src="https://github.com/user-attachments/assets/9c07fdf7-4df0-4ac0-b2de-1a116953e620">
+<img width="1280" alt="설문신청4" src="https://github.com/survey-project-2024-05-07/survey-project/assets/152495943/3fa442d2-9f4a-4676-a983-35dbfcfc1550">
+<img width="1280" alt="설문신청5" src="https://github.com/survey-project-2024-05-07/survey-project/assets/152495943/8257da5e-9ccb-4219-ac39-4f7472b6790c">
 
-![Alt text](https://raw.githubusercontent.com/survey-project-2024-05-07/survey-project/main/img/%EC%84%A4%EB%AC%B8%EC%8B%A0%EC%B2%AD3.png?token=GHSAT0AAAAAACTQSMXEXOCRYI56FFJYHMVUZTUFZSQ)![Alt text](%EC%84%A4%EB%AC%B8%EC%8B%A0%EC%B2%AD4.png)
 <br>
+
+<
 
 
 
@@ -233,10 +252,12 @@
 
 | 소개 |
 |----------|
-![Alt text](https://raw.githubusercontent.com/survey-project-2024-05-07/survey-project/main/img/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%20%EC%86%8C%EA%B0%9C.png?token=GHSAT0AAAAAACTQSMXF6GTKKP5GEYENDWHQZTUF2SQ)
+<img width="1280" alt="웹사이트 소개" src="https://github.com/user-attachments/assets/88a6418a-55dd-49f1-9287-e72d12d4be03">
+
 
 | 안내 |
-![Alt text](https://raw.githubusercontent.com/survey-project-2024-05-07/survey-project/main/img/%EC%9B%B9%EC%82%AC%EC%9D%B4%ED%8A%B8%20%EC%95%88%EB%82%B4.png?token=GHSAT0AAAAAACTQSMXEYBIFODOKQBOTIAHYZTUF24A)
+|----------|
+<img width="1280" alt="웹사이트 안내" src="https://github.com/user-attachments/assets/6bf6ea84-68e6-40a6-8ded-e9a0483ff2ff">
 <br>
 
 ### [마이페이지]
@@ -248,9 +269,13 @@
 있습니다.
     
 
-| 마이페이지 | 적립금 교환 |
-|----------|----------|
-|![myProfile](https://raw.githubusercontent.com/survey-project-2024-05-07/survey-project/main/img/%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%80.png?token=GHSAT0AAAAAACTQSMXE7TNC35DHL24VKM7QZTUF3MA)|![followList](https://raw.githubusercontent.com/survey-project-2024-05-07/survey-project/main/img/%EB%A7%88%EC%9D%B4%ED%8E%98%EC%9D%B4%EC%A7%804.png?token=GHSAT0AAAAAACTQSMXFTK45WP7OQA2SISR4ZTUF33Q)|
+| 마이페이지| 
+|----------|
+<img width="1279" alt="마이페이지" src="https://github.com/user-attachments/assets/fa9b8b88-a331-4b71-be3e-9fbb13a45d1a">
+
+| 적립금 교환|
+|----------|
+<img width="1280" alt="마이페이지4" src="https://github.com/user-attachments/assets/bbd3072f-13bb-460f-b9ca-951f02e5eac9">
 
 <br>
 
@@ -264,7 +289,7 @@
 
 | 공지사항 |
 |----------|
-|![uploadPost](https://raw.githubusercontent.com/survey-project-2024-05-07/survey-project/main/img/%EA%B3%B5%EC%A7%80%EC%82%AC%ED%95%AD1.png?token=GHSAT0AAAAAACTQSMXEOWOSSJQXU2CJBBEEZTUF4KA)|
+<img width="1280" alt="공지사항1" src="https://github.com/user-attachments/assets/137f7114-23c8-43e1-84a0-8892aa100890">
 
 <br>
 
@@ -274,64 +299,31 @@
 
 | 자주 묻는 질문 |
 |----------|
-|![editDeletePost](https://raw.githubusercontent.com/survey-project-2024-05-07/survey-project/main/img/%EC%9E%90%EC%A3%BC%EB%AC%BB%EB%8A%94%EC%A7%88%EB%AC%B8.png?token=GHSAT0AAAAAACTQSMXF7YDGVW2RPPVCIQQGZTUF4TQ)|
+<img width="1280" alt="자주묻는질문" src="https://github.com/user-attachments/assets/3236e6f3-0f07-4b06-b065-0afeac267181">
 
 <br>
 
-
-## 8. 트러블 슈팅
-
-- [탭메뉴 프로필 버튼 이슈](https://github.com/likelion-project-README/README/wiki/README-8.%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85_%ED%83%AD%EB%A9%94%EB%89%B4-%ED%94%84%EB%A1%9C%ED%95%84-%EB%B2%84%ED%8A%BC-%EC%9D%B4%EC%8A%88)
-
-- [프로필 수정 이슈](https://github.com/likelion-project-README/README/wiki/README-8.%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85_%ED%94%84%EB%A1%9C%ED%95%84-%EC%88%98%EC%A0%95-%EC%9D%B4%EC%8A%88)
-
-<br>
-
-## 9. 개선 목표
-
-- API 모듈화 : API를 불러오는 코드의 반복이 많아 모듈화할 예정
-- lighthouse Performance 증진
-    - 모든 페이지에서 특히 Best Practices & SEO 점수는 90~100으로 우수
-    - Performance 점수가 대체적으로 미흡한 문제
     
-    ![KakaoTalk_Photo_2023-01-04-16-55-30](https://user-images.githubusercontent.com/112460466/210591134-09bf8efd-3c34-4b99-a3d7-895ca99e1457.png)
-    
-- **23-01-17 성능 개선 내용**
-    
-    ![성능개선 후](https://user-images.githubusercontent.com/106502312/212872369-7ceeb2cf-d551-41d2-bfb0-01e35e9903fe.png)
-    
-    - 이미지 최적화
-        - `<img>` 요소에 `width` , `height` 속성값을 명시해 불필요한 Reflow를 방지했습니다.
-        - browser-image-compression 라이브러리를 사용해 유저가 업로드하는 이미지를 압축했습니다.
-        - Intersection Observer API를 사용해 Lazy Loading 기법을 적용하여 홈 피드의 게시글 이미지가 viewport 내에 들어오는 순간 로딩되도록 변경했습니다.
-    - 웹폰트 최적화
-        - WOFF2 포맷을 추가하고 가장 우선적으로 적용되도록 선언했습니다.
-        - 서브셋 폰트로 교체해 용량을 줄였습니다.
-    
-<br>
-
-## 10. 프로젝트 후기
+## 8. 프로젝트 후기
 
 ### 👦 심규창
 
-협업을 하면서 개발은 혼자 잘 하는 것보다, 팀원들과의 소통과 조화가 중요하다는 것을 깨닫는 시간이었습니다. 개발실력은 물론이고 커뮤니케이션 스킬도 늘릴 수 있는 좋은 기회였습니다. 이번 프로젝트를 통해 정말 많이 성장하고 배웠습니다. 
+협업을 하면서 개발은 혼자 잘 하는 것보다, 팀원들과의 소통과 조화가 중요하다는 것을 깨닫는 시간이었습니다. 개발실력은 물론이고 커뮤니케이션 스킬도 늘릴 수 있는 좋은 기회였습니다. 그리고 또한 대략 120번의 에러를 만나면서 에러에 대한 두려움이 많이 사라지고 어떤 에러든 고민하고 시간을 들이면 해결할 수 있다는 것을 깨달았습니다. 정말 많이 성장할 수 있는 기회였고 앞으로도 이 기회를 바탕으로 더 성장하는 개발자가 되겠습니다.
 
 <br>
 
 ### 👩 신지영
 
-여러모로 많은 것들을 배울 수 있었던 한 달이었습니다. 혼자서는 할 수 없었던 일이라는 것을 너무 잘 알기에 팀원들에게 정말 감사하다는 말 전하고 싶습니다. 개인적으로 아쉬웠던 부분은 기한 내에 기능을 구현하는 데에만 집중하면서 트러블 슈팅이나 새로 배웠던 것들을 체계적으로 기록하지 못했다는 점입니다. 이렇게 느낀 바가 있으니 이후의 제가 잘 정리하면서 개발할 거라 믿습니다… 하하 다들 수고하셨습니다!!!!
+첫 프로젝트이기 때문에 모르는 부분도 많았고 걱정도 많았지만, 팀원들이 믿고 잘 따라와주었기 때문에 많은 기능을 해낼 수 있었습니다. 배웠던 것들을 실제로 사용하고 응용해보면서 익힐 수 있는 시간을 가질 수 있었고, 저를 한 발 더 내딛게 해준 프로젝트라고 생각합니다. 이번 경험을 바탕으로 앞으로 더 완성도 있고 다양한 프로젝트를 해보고 싶습니다.
 
 <br>
 
 ### 👧 최소윤
 
-팀 프로젝트 시작에 앞서 초기 설정을 진행하며 체계적인 설계의 중요성을 느꼈습니다. 앞으로는 점점 더 체계적이고 효율적으로 프로젝트를 진행할 수 있도록 발전하고 싶습니다.
-정규 수업 직후에 프로젝트를 진행하면서 배운 내용을 직접 구현하는 과정이 어색했지만 어떤 부분이 부족한지 알 수 있는 기회였습니다. 스스로 최대한 노력해보고 팀원들과 함께 해결해 나가면서 협업의 장점을 체감할 수 있었습니다. 하지만 빠르게 작업을 진행하면서 팀원들과 함께 해결한 이슈가 어떤 이슈이며 어떻게 해결했는지에 대해 자세히 작성하지 못한 것이 아쉽습니다.
-’멋쟁이 사자처럼’이라는 같은 목표를 가진 집단에서 프로젝트에 함께할 수 있는 소중한 경험이었습니다. 함께 고생한 조원들 모두 고생하셨습니다! 앞으로도 화이팅해서 함께 목표를 이뤄가고 싶습니다.
+프로젝트를 시작하면서 잘할수 있을까에 대한 걱정이 많았지만 확실히 프로젝트를 하면서 많은것을 배우고 실력을 늘릴 수 있는 기회였던것 같습니다 그리고 팀원분들 덕분에 포기하고 싶었다가도 끝까지 마무리 할 수 있었던 것 같습니다
 
 <br>
 
 ### 🧑 김예찬
 
-컨벤션을 정하는 것부터 Readme 파일 작성까지 전 과정을 진행하려니 처음 생각보다 많은 에너지를 썼어요. 좋은 의미로 많이 썼다기보다, 제 능력을 십분 발휘하지 못해서 아쉬움이 남는 쪽입니다. 개발한다고 개발만 해서는 안 된다는 것을 몸소 느껴보는 기간이었던 것 같습니다. 이번 기회로 프로젝트를 진행하면서, 제가 잘하는 점과 부족한 점을 확실하게 알고 가는 건 정말 좋습니다. 기술적인 부분에 있어서는 리액트의 컴포넌트화가 주는 장점을 알았습니다. 조금 느린 개발이 되었을지라도 코드 가독성 부분에 있어서 좋았고, 오류가 발생해도 전체가 아닌 오류가 난 컴포넌트와 근접한 컴포넌트만 살펴보면 수정할 수 있는 부분이 너무 편했습니다. 모두 고생 참 많으셨고 리팩토링을 통해 더 나은 프로젝트 완성까지 화이팅입니다.
+현업에서는 기본적인 것인데 실제로 프로젝트를 참여해보니 아직 많이 부족하다는 것을 느꼈습니다. 이번이 첫 프로젝트인데 운 좋게 열정적인 조원들과 함께 하게 되어 첫 단추를 잘 끼웠다고 생각합니다. 프로젝트를 시작하기 전 막막한 마음뿐이었지만 빠지지 않고 어떻게든 맨땅에 헤딩하며 참여함으로써 웹개발의 전체적인 흐름만큼은 잘 알게 된 것 같습니다. 앞으로도 이러한 프로젝트를 통해 계속해서 실력을 키워나가도록 할 것입니다.
