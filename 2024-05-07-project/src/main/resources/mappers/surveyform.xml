@@ -1,0 +1,108 @@
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.surveyProject.project.domain.survey.surveyform.SurveyFormRepository">
+	  
+	  <insert id="saveSurveyForm" parameterType="com.surveyProject.project.domain.survey.surveyform.SurveyForm">
+		  insert into 
+		  	survey_information(
+		  	survey_code,
+		  	survey_title,
+		  	survey_content,
+		  	participant_count,
+		  	survey_status,
+		  	create_date,
+		  	update_date)
+		  values 
+			 (
+			  0,
+			  #{survey_title},
+			  #{survey_info},
+			  0,
+			  1,
+			  now(),
+			  now())
+	  </insert>
+	  
+	  <insert id="saveSurveyFormQustionAndOptions" parameterType="java.util.List">
+        <foreach collection="list" item="surveyForm" separator=";">
+            insert into 
+            	survey_question (
+                question_code, 
+                survey_code, 
+                question_title,
+                question_essential,
+                select_type, 
+                detail_question
+                )
+                values
+                (
+                0,
+                (SELECT nvl(MAX(survey_code),0) FROM survey_information),
+                #{surveyForm.question_title},
+                #{surveyForm.question_select_option},
+                #{surveyForm.question_essential},
+                #{surveyForm.detail_question}
+           		);
+           		<foreach collection="surveyForm.question_options" item="option" separator=";">
+	           	insert into 
+	           		question_choice(
+	           		option_code,
+	           		question_code,
+	           		option_content
+	           		)
+	           	values
+					(
+	           		0,
+	           		(SELECT nvl(MAX(question_code),0) FROM survey_question),
+	           		#{option}					   
+	           		)
+			   </foreach>
+        </foreach>
+    </insert>
+
+<!--	설문신청 도입부-->
+	<insert id="applySurveyForm" parameterType="com.surveyProject.project.domain.survey.survey.ApplyInformation">
+
+		INSERT INTO apply_information
+			(survey_code, application_class, survey_class,
+			survey_password, user_code, company_code,
+			category_code, survey_target_gender, survey_target_age,
+			survey_per_money, participant_max, survey_period_start,
+			survey_period_stop)
+		VALUES(0, #{application_class}, #{survey_class},
+			#{survey_password}, #{user_code}, #{company_code},
+			#{category_code},  #{survey_target_gender}, #{survey_target_age},
+			#{survey_per_money}, #{participant_max}, #{survey_period_start},
+			#{survey_period_stop});
+
+	</insert>
+
+	<insert id="applyCompanySurveyForm" parameterType="com.surveyProject.project.domain.survey.survey.ApplyInformation">
+		INSERT INTO apply_information
+			(survey_code, application_class, survey_class,
+			survey_password, company_code , category_code,
+			survey_target_gender, survey_target_age, survey_per_money,
+			participant_max, survey_period_start, survey_period_stop)
+		VALUES(0, #{application_class}, #{survey_class},
+			#{survey_password}, #{company_code}, #{category_code},
+			#{survey_target_gender}, #{survey_target_age}, #{survey_per_money},
+			#{participant_max}, #{survey_period_start}, #{survey_period_stop});
+	</insert>
+
+	  <select id="getPaymentInfo" parameterType="Integer"
+	  resultType="com.surveyProject.project.domain.survey.pay.Payment">
+		  select
+		  	ai.survey_code,
+		  	si.survey_title,
+		  	ai.survey_per_money,
+		  	ai.participant_max
+		  from 
+		  	apply_information ai 
+		  	left outer join survey_information si ON(ai.survey_code = si.survey_code)
+		  where
+		  	ai.survey_code = #{survey_code}
+	  </select>
+
+  </mapper>

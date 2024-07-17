@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.surveyProject.project.domain.survey.mypage.MypageRepository">
+	
+	<select id="getUserInfoByUserCode" parameterType="Integer"
+	resultType="com.surveyProject.project.domain.survey.mypage.UserInfo">
+		select
+			um.user_code,
+			um.user_name,
+			ud.user_nickname,
+			um.user_email,
+			um.role,
+			ud.user_birth,
+			ud.user_gender,
+			ud.user_account,
+			ud.user_img,
+			ud.user_money,
+			um.create_date,
+			um.update_date
+		from
+			user_mst um
+			left outer join user_dtl ud ON(um.user_code = ud.user_code)
+		where
+			um.user_code = #{user_code}
+	</select>
+	<select id="getUserSurveyListByUserCode" parameterType="Integer"
+	resultType="com.surveyProject.project.domain.survey.mypage.UserSurveyList">
+		select
+			sr.respondent_code,
+			sr.survey_code,
+			sr.user_code,
+			si.survey_title,
+			ai.survey_per_money,
+			sr.apply_date
+		from 
+			survey_respondent sr
+			left outer join apply_information ai ON(sr.survey_code = ai.survey_code)
+			left outer join survey_information si ON(sr.survey_code = si.survey_code)
+		where 
+			sr.user_code = #{user_code};
+	</select>
+	<update id="ChangePoint" parameterType="hashmap">
+		update
+			user_dtl
+		set
+			user_money = #{money}
+		where
+			user_code = #{code}
+	</update>
+	<delete id="DeleteUser" parameterType="Integer">
+		delete from
+			um, ud
+		using
+			user_mst um
+		join
+			user_dtl ud ON(um.user_code = ud.user_code)
+		where
+			um.user_code = #{user_code}
+	</delete>
+	<update id="ChangeUserInfo" parameterType="com.surveyProject.project.domain.survey.mypage.UserInfo">
+		update
+			user_mst um
+			inner join user_dtl ud ON um.user_code = ud.user_code
+		set
+			um.user_name = #{user_name},
+			ud.user_nickname = #{user_nickname},
+			um.user_email = #{user_email},
+			ud.user_birth = #{user_birth},
+			ud.user_gender = #{user_gender},
+			ud.user_account = #{user_account},
+			ud.user_img = #{user_img}
+		where
+			um.user_code = #{user_code}
+			
+	</update>
+	<select id="getApplyListByCode" parameterType="hashmap" 
+	resultType="com.surveyProject.project.domain.survey.mypage.ApplyList">
+		select
+			ai.survey_code,
+			si.survey_title,
+			si.participant_count,
+			ssd.status_content,
+			ai.survey_period_start,
+			ai.survey_period_stop
+		from
+			apply_information ai
+			left outer join survey_information si on(ai.survey_code = si.survey_code)
+			left outer join survey_status_dtl ssd on(si.survey_status = ssd.survey_status)
+		where 
+			<choose>
+				<when test='type.equals("user")'>
+					ai.user_code = #{code}
+				</when>
+				<when test='type.equals("company")'>
+					ai.company_code = #{code}
+				</when>
+				<otherwise>
+					ai.user_code = #{code}
+				</otherwise>
+			</choose>
+	</select>
+	<select id="getUserInfoByUsercode" parameterType="Integer"
+	resultType="com.surveyProject.project.domain.survey.user.User">
+		SELECT 
+			* 
+		FROM 
+			user_mst 
+		WHERE user_code = #{user_code};
+	</select>
+	<update id="changePassword" parameterType="com.surveyProject.project.domain.survey.user.User">
+		update
+			user_mst
+		set
+			user_password = #{user_password}
+		where
+			user_code = #{user_code}
+	</update>
+</mapper>

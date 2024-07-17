@@ -1,0 +1,43 @@
+/* 2024.5.17 최소윤 조금수정 */
+.surveyList {
+    margin: auto;
+    width: 1100px;
+    display: flex;
+    align-items: center;
+    flex-flow: row wrap;
+}
+
+.survey-list {
+    background-color: #77A1D7;
+    text-align: center;
+    align-items: center;
+    color: #fefefe;
+    width: 300px;
+    height: 200px;
+    border-radius: 17px;
+    margin: 30px 30px;
+}
+
+.survey-title {
+    font-size: 24px;
+    margin: 8px 0px;
+}
+
+.survey-list-content {
+    display: flex;
+    margin: auto;
+    justify-content: space-around;
+    flex-direction: column;
+/* align-content: space-around; */
+    border-radius: 17px;
+    width: 250px;
+    height: 130px;
+    background-color: #fefefe;
+    color: #141414;
+}
+
+.survey-list-content > span{
+    font-size: 14px;
+}
+
+

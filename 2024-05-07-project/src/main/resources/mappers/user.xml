@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.surveyProject.project.domain.survey.user.UserRepository">
+    <insert id="save" parameterType="com.surveyProject.project.domain.survey.user.User">
+        INSERT INTO user_mst (user_code, user_name, user_email, user_password, provider, role,create_date, update_date)
+        VALUES(0, #{user_name}, #{user_email}, #{user_password}, #{provider}, #{role}, NOW(), NOW());
+        INSERT INTO user_dtl (user_code, user_birth, user_gender) VALUES(0, #{user_birth}, #{user_gender});
+    </insert>
+    
+    <insert id="savecom" parameterType="com.surveyProject.project.domain.survey.user.Company">
+        INSERT INTO company_mst VALUES(0, #{company_name}, #{company_email}, #{company_password},  #{role}, #{join_status}, now(), now());
+    </insert>
+    
+    <select id="findByEmail" parameterType="String" resultType="com.surveyProject.project.domain.survey.user.User">
+        SELECT  * FROM user_mst WHERE user_email = #{email};
+    </select>
+    
+    <select id="findByComEmail" parameterType="String" resultType="com.surveyProject.project.domain.survey.user.Company">
+        SELECT  * FROM company_mst WHERE company_email = #{email};
+    </select>
+
+</mapper>

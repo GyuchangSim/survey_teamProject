@@ -1,0 +1,125 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+  
+  /* 그라데이션 바 */
+.surveyBox-web {
+  display: flex;
+  margin-top : 35px;
+
+  width : 874px;
+  height : 60px;
+  border-bottom-right-radius : 20px;
+  background : linear-gradient(to right,#0F3360,#1F69C6);
+  color : white;
+}
+  
+  /* 그라데이션 바 안 박스들 */
+.infoBox-web{
+  padding-top: 15px;
+  
+  width: 200px;
+  height: 100%;
+  
+  text-align: center;
+  justify-content: center;
+
+  border-right: 1px solid white;
+}
+
+.infoBox-web > span {
+  font-size: 20px;
+  font-weight: 700;
+}
+  
+/* 마지막 박스 오른쪽 흰줄 안보이게*/
+.surveyBox-web :last-child {
+  border-right: none;
+}
+
+.houseImg-web {
+  width: 40px;
+  height: 40px;
+}
+  
+main{
+    display: flex;
+    margin-top: 30px;
+}
+  
+/* 가장 큰 박스 */
+.web-info-main{
+    margin-left: 80px;
+  
+    width: 800px;
+    height: 700px;
+  
+    border: 1px solid black;
+    border-radius: 8px;
+}
+  
+.web-info-main-top{
+    display: flex;
+    justify-content: space-between;
+
+    height: 70px;
+    background-color: #0F3360;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+  
+.web-info-main-top-left{
+    margin: 20px 30px;
+  
+    font-size: 18px;
+    font-weight: 700;
+}
+  
+.web-info-main-top-right{
+    margin: 20px 47px;
+    display: flex;
+    align-items: center;
+}
+  
+.web-info-main-top-right > img {
+    width: 74px;
+    height: 43px;
+}
+  
+.web-info-main-text {
+  margin-left : 5px;
+
+  color: white;
+  font-size : 18px;
+  font-weight : 700;
+}
+  
+  
+  
+  
+  /* 큰 박스안 웹사이트소개 있는 박스*/
+.web-info-main-main{
+  margin: auto;
+  margin-top: 24px;
+
+  width: 750px;
+  height: 580px;
+
+  border: 1px solid black;
+  border-radius: 8px;
+  background-color: #F0F7FF;
+}
+
+.web-info-main-main > div {
+  margin: 30px 10px;
+}
+
+.web-info-main-main > div > h3 {
+  color: #1F69C6;
+}
+
+.web-info-main-main > div > p {
+  font-size: 13px;
+}
+

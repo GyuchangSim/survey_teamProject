@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.surveyProject.project.domain.survey.user.FileRepository">
+<!--    <insert id="save">-->
+<!--        INSERT INTO company_file-->
+<!--        VALUES(#{file_code}, #{company_code}, #{file_name}, #{origin_name}, #{file_path}, #{file_size}, NOW());-->
+<!--    </insert>-->
+
+    <insert id="saveFile" parameterType="com.surveyProject.project.domain.survey.user.FileEntity">
+        INSERT INTO company_file
+        VALUES
+        (0,
+        (SELECT NVL(MAX(company_code), 0 ) + 1 FROM company_mst), #{file_name}, NOW());
+    </insert>
+
+<!--    설문신청 도입부 파일첨부-->
+    <insert id="addFile" parameterType="com.surveyProject.project.domain.survey.surveyform.ApplyFile">
+        INSERT INTO apply_file VALUES(0, (SELECT nvl(MAX(survey_code),0) + 1 FROM apply_information),
+        #{file_name}, NOW(), NOW());
+    </insert>
+
+    <select id="maxPk" resultType="int">
+        SELECT MAX(file_code) FROM company_file;
+    </select>
+    
+	<update id="userImgSave" parameterType="com.surveyProject.project.domain.survey.mypage.UserInfo">
+		update
+			user_dtl
+		set 
+			user_img = #{user_img}
+		where
+			user_code = #{user_code}
+	</update>
+
+	
+</mapper>

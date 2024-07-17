@@ -1,0 +1,78 @@
+/* 2024.5.17 최소윤 조금수정 */
+
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.surveyBox-survey {
+display: flex;
+margin-top : 35px;
+
+width : 874px;
+height : 60px;
+
+border-bottom-right-radius : 20px;
+background : linear-gradient(to right,#0F3360,#1F69C6);
+color : white;
+}
+
+.infoBox-survey {
+padding-top: 15px;
+
+text-align: center;
+justify-content: center;
+
+width: 200px;
+height: 100%;
+
+border-right: 1px solid white;
+}
+
+.infoBox-survey > span {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.houseImg-survey {
+width: 40px;
+height: 40px;
+}
+
+.surveyBox-survey :last-child {
+border-right: none;
+}
+
+span {
+  font-size: 18px;
+}
+
+.C {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkbox {
+  margin: 0px 5px 0px 20px;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+}
+.age-checkbox{
+  margin: 0px 0px 0px 20px;
+  vertical-align: middle;
+  width: 20px;
+  height: 20px;
+}
+
+
+hr {
+    color: #D9D9D9;
+    width: 1348px;
+    margin-top:20px;
+}
+
+span {
+  font-size: 18px;
+}

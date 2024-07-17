@@ -1,0 +1,147 @@
+.container_surveyform {
+  margin: 30px auto;
+  width: 950px;
+  height: 650px;
+  background-color: #f4f4f4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+}
+
+.container_surveyform::-webkit-scrollbar {
+  display: none;
+}
+
+.survey_main_form {
+  width: 700px;
+}
+
+.survey_form_buttons{
+  display: flex;
+  justify-content: end;
+  width: 600px;
+}
+
+.survey_form_button {
+  margin: 0px 5px;
+  width: 80px;
+  height: 30px;
+  background-color: #0F3360;
+  border-radius: 5px;
+  color: white;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* ------------------------------------------------ */
+
+.survey2_title_box {
+  margin: auto;
+  margin-top: 30px;
+  width: 600px;
+  height: 140px;
+  border: 1px solid #0F3360;
+  border-radius: 10px;
+}
+
+.title_box {
+  height: 70px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 20px;
+  border-bottom: 1px solid #0F3360;
+}
+
+.info_box_form {
+  display: flex;
+  margin: 0px 20px;
+}
+
+/* ------------------------------------------------ */
+
+.question_box_input {
+  width: 600px;
+  min-height: 100px;
+  margin: 10px auto;
+  border: 1px solid #0F3360;
+  border-radius: 10px;
+}
+
+.question_title_box {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #0F3360;
+}
+
+.survey_form_answer {
+  margin: 10px 20px;
+}
+
+.survey_form_options {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 20px;
+}
+
+.survey_form_options > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.inputImage {
+  width: 100px;
+  padding: 3px;
+  cursor: pointer;
+}
+
+.inputImage:active {
+  background-color: #ebebeb;
+}
+
+form input::file-selector-button {
+  display: none;
+}
+
+.survey_form_options > div > img {
+  width: 20px;
+}
+
+.detail_question_box {
+  margin: 10px 20px;
+  min-height: 80px;
+  border-top: 1px solid #0F3360;
+}
+
+.detail_question_title {
+  margin-top: 10px;
+}
+
+.detail_question_title > input {
+  font-size: 15px;
+  border: none;
+  background-color: #f4f4f4;
+}
+
+.question_bottom_box {
+  display: flex;
+  justify-content: space-between;
+  margin: 10px 20px;
+  padding-top: 10px;
+  border-top: 1px solid #0F3360;
+}
+
+form input::file-selector-button {
+  display: none;
+}
+
+
+.testImg{
+  width: 50px;
+  height: auto;
+}

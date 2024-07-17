@@ -1,0 +1,78 @@
+.surveyBox_apply {
+  display: flex;
+  margin-top : 35px;
+  width : 874px;
+  height : 60px;
+  border-bottom-right-radius : 20px;
+  background : linear-gradient(to right,#0F3360,#1F69C6);
+  color : white;
+}
+
+.infoBox_apply{
+  width: 200px;
+  height: 100%;
+  text-align: center;
+  justify-content: center;
+  padding-top: 5px;
+  font-size: 32px;
+  font-weight: 700;
+  border-right: 1px solid white;
+}
+
+.surveyBox_apply :last-child {
+  border-right: none;
+}
+
+.houseImg_apply{
+  width: 40px;
+  height: 40px;
+}
+
+.Boxes_apply {
+  width: 800px;
+  display: flex;
+  justify-content: space-around;
+  margin: auto;
+  margin-top: 40px;
+}
+
+.Boxes > div {
+  display: flex;
+  cursor: pointer;
+}
+
+.applyPerson {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 450px;
+  background-color: #C0DBFD;
+  margin: 20px;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.applyPeople {
+  display: flex;
+  flex-direction: column;
+  width: 350px;
+  height: 450px;
+  background-color: #92C4FE;
+  margin: 20px;
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+}
+
+.classImages {
+  width: 250px;
+  height: auto;
+  margin-bottom: 10px;
+}

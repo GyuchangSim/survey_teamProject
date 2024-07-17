@@ -1,0 +1,158 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+  
+  /* 그라데이션 바 */
+.surveyBox-notice {
+  display: flex;
+  margin-top : 35px;
+
+  width : 874px;
+  height : 60px;
+
+  border-bottom-right-radius : 20px;
+  background : linear-gradient(to right,#0F3360,#1F69C6);
+  color : white;
+}
+  
+  /* 그라데이션 바 안 박스들 */
+.infoBox-notice {
+  padding-top: 15px;
+
+  text-align: center;
+  justify-content: center;
+
+  width: 200px;
+  height: 100%;
+
+  border-right: 1px solid white;
+}
+
+.infoBox-notice > span {
+  font-size: 20px;
+  font-weight: 700;
+}
+  
+/* 마지막 박스 오른쪽 흰줄 안보이게*/
+.surveyBox-notice :last-child {
+  border-right: none;  
+}
+
+.houseImg-notice {
+  width: 40px;
+  height: 40px;
+}
+  
+main {
+  display: flex;
+  margin-top: 30px;
+}
+
+/* 공지사항 등록 버튼 */
+.notice-create-button {
+ margin-top: 30px;
+ 
+  width: 280px;
+  height: 50px;
+
+  border: 1px solid black;
+  border-radius: 8px;
+  background-color: white;
+
+  font-size: 15px;
+  cursor: pointer;
+}
+
+/* main-box */
+.notice-main {
+  margin-left: 80px;
+
+  width: 850px;
+  height: 800px;
+
+  border: 1px solid black;
+  border-radius: 8px;
+
+  display: flex;
+  flex-direction: column;
+}
+  
+/* main-box-top */
+.notice-main-top {
+  display: flex;
+  justify-content: space-between;
+
+  height: 70px;
+  background-color: #0F3360;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+
+.notice-main-top-left {
+  margin: 20px 30px;
+
+  font-size: 18px;
+  font-weight: 700;
+}
+  
+  
+.notice-main-top-right {
+  margin: 25px 47px;
+  display: flex;
+  align-items: center;
+}
+  
+.notice-main-top-right > img {
+  width: 74px;
+  height: 43px;
+}
+  
+.notice-main-text {
+  margin-left : 5px;
+  
+  color: white;
+  font-size : 18px;
+  font-weight : 700;
+}
+
+.notice-main-under {
+  margin: auto;
+  overflow-y: scroll;
+  border-collapse: collapse;
+
+  width: 800px;
+  height: 750px;
+}
+
+/* 공지사항표 */
+.notice-table {
+  border-collapse: collapse;
+
+  margin: auto;
+  margin-top: 30px;
+
+  width: 800px;
+  height: auto;
+
+  border: 1px solid black;
+}
+
+
+.notice-title {
+  width: 200px;
+  height: 50px;
+  border-bottom: 1px solid black;
+  font-size: 14px;
+  background-color: #F0F7FF;
+}
+
+.notice-content {
+  box-sizing: border-box;
+  width: 200px;
+  height: 50px;
+  border-bottom: 1px solid black;
+  text-align: center;
+  padding-top: 15px;
+  font-size: 14px;
+}

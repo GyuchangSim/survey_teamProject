@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.surveyProject.project.domain.survey.notice.NoticeRepository">
+	  
+	  <select id="getuser" parameterType="integer" resultType="com.surveyProject.project.domain.survey.notice.Notice">
+		   select 
+		   user_code,
+		   role
+		   from 
+		   	user_mst 
+		   where 
+		   user_code = #{user_code}
+	  </select>
+	  
+	  <select id="getnotice" parameterType="hashmap" resultType="com.surveyProject.project.domain.survey.notice.Notice">
+		   select 
+		  	nm.notice_code,
+		  	nm.notice_title,
+		    nm.update_date
+		  from 
+		  	notice_mst nm
+		  	left outer join user_mst um on(nm.user_code = um.user_code)
+		  order by 
+		  	nm.notice_code desc
+		  limit 
+		  	#{index},#{count}
+		  
+	  </select>
+
+	<select id="getNotice3" resultType="com.surveyProject.project.web.dto.NoticeRespDto">
+		SELECT notice_title, notice_code FROM notice_mst ORDER BY create_date desc LIMIT 3;
+	</select>
+	  
+	  <insert id="savenotice" parameterType="com.surveyProject.project.domain.survey.notice.Notice">
+		 insert into 
+		 	notice_mst 
+		 values 
+		 	(0,
+		 	#{user_code},
+		 	#{notice_title},
+		 	#{notice_content},
+		 	now(),
+		 	now()) 
+	  </insert>
+	  
+	  <select id="noticedetail" parameterType="Integer" resultType="com.surveyProject.project.domain.survey.notice.Notice">
+		  select 
+		  	nm.notice_title,
+		  	nm.notice_content,
+		  	um.role
+		  from 
+		  	notice_mst nm
+		  	left outer join user_mst um on(nm.user_code = um.user_code)
+		  where 
+		  	nm.notice_code = #{notice_code}
+	  </select>
+	  
+	  <update id="updatenotice" parameterType="com.surveyProject.project.domain.survey.notice.Notice">
+		  update
+		  	notice_mst 
+		  set 
+		  	user_code = #{user_code},
+		  	notice_title = #{notice_title},
+		  	notice_content = #{notice_content},
+		 	update_date = now()
+		  where 
+		 	notice_code = #{notice_code}  
+	  </update>
+	  
+	  <delete id="deletenotice" parameterType="Integer">
+		  delete 
+		  from 
+		  	notice_mst 
+		  where 
+		  	notice_code = #{notice_code}
+	  </delete>
+  </mapper>

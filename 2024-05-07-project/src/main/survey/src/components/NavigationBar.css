@@ -1,0 +1,44 @@
+.dropdown  {
+  margin: auto;
+  position: absolute;
+  width: 1348px;
+  height: 120px;
+  top: 100px;
+  background-color: #0F3360;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+.navibox-container{
+  z-index: 100;
+}
+
+.navibar_frame {
+  background-color: #0F3360;
+  height: 100px;
+  width: 1348px;
+  margin: auto;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Subitem {
+  display: flex;
+  justify-content: end;
+}
+
+.nav_links {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  margin: 10px 45px;
+}
+
+.nav_links > * {
+  color: white;
+  text-decoration: none;
+  margin: 10px 0px;
+}

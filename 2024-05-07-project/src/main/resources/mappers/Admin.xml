@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.surveyProject.project.domain.survey.admin.AdminRepository">
+	  <select id="getCompanyListOfIndex" parameterType="hashmap"
+	  resultType="com.surveyProject.project.domain.survey.admin.Company">
+		  select 
+		  	cm.company_code,
+		  	cm.company_name,
+		  	cm.company_email,
+		  	cf.file_name,
+		  	cm.role,
+		  	cm.join_status,
+		  	cm.create_date,
+		  	cm.update_date
+		  from 
+		  	company_mst cm
+		  	left outer join company_file cf on(cm.company_code = cf.company_code)
+		  where
+		  	cm.join_status = 0
+		  order by 
+		  	cm.company_code
+		  limit 
+		  	#{index}, #{count}
+	  </select>
+	  <select id="getSurveyListOfIndex" parameterType="hashmap" 
+	  resultType="com.surveyProject.project.domain.survey.admin.Survey">
+	  	select
+	  		survey_code,
+	  		survey_title,
+	  		survey_content,
+	  		survey_present_img,
+	  		participant_count,
+	  		survey_status,
+	  		create_date,
+	  		update_date
+	  	from
+	  		survey_information
+	  	where
+	  		survey_status = 1
+		order by 
+		  	survey_code
+		limit 
+		  	#{index}, #{count}
+	  </select>
+	  <update id="updateCompanyApproval" parameterType="Integer">
+		  update
+		  	company_mst
+		  set
+		  	join_status = 1,
+		  	update_date = now()
+		  where
+		  	company_code = #{company_code};
+	  </update>
+	  <delete id="deleteCompany" parameterType="Integer">
+		  delete from
+		  	company_mst
+		  where 
+		  	company_code = #{company_code};
+	  </delete>
+	  <update id="updateSurveyApproval" parameterType="Integer">
+		  update
+		  	survey_information
+		  set
+		  	survey_status = 2,
+		  	update_date = now()
+		  where
+		  	survey_code = #{survey_code};
+	  </update>
+	  <delete id="deleteSurvey" parameterType="Integer">
+		  delete from
+		  	survey_information
+		  where 
+		  	survey_code = #{survey_code};
+	  </delete>
+  </mapper>

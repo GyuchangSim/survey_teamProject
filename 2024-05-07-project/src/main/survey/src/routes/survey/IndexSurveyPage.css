@@ -1,0 +1,123 @@
+/* 2024.5.22 최소윤 */
+
+.surveypage-container {
+    margin: 30px auto;
+    width: 950px;
+    height: 650px;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    overflow-y: scroll;
+}
+
+.surveypage-container::-webkit-scrollbar {
+    display: none;
+}
+
+.surveypage-main {
+    width: 700px;
+}
+
+.survey-title-box {
+    margin: auto;
+    margin-top: 30px; 
+    width: 600px;
+    height: 140px;
+    border: 1px solid #0F3360;
+    border-radius: 10px;
+}
+
+.title-box {
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 20px;
+    border-bottom: 1px solid #0F3360;
+}
+
+.info-box-surveypage {
+    display: flex;
+    margin: 0px 20px;
+}
+
+.info-box-surveypage > span {
+    font-size: 14px;
+}
+
+
+.surveypage-question-box {
+    width: 600px;
+    min-height: 100px;
+    margin: 10px auto;
+    border: 1px solid #0F3360;
+    border-radius: 10px;
+}
+
+.question-title-box {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #0F3360;
+}
+
+.question-title-box > div > span {
+    font-size: 16px;
+}
+
+.survey-page-answer {
+    margin: 10px 20px;
+}
+
+.survey-page-options {
+    display: flex;
+    flex-direction: column;
+    margin: 10px 20px;
+}
+
+.survey-page-options > div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.survey-page-options > div > img {
+    width: 20px;
+}
+
+.surveypage-option {
+    margin-left: 10px;
+    font-size: 14px;
+    vertical-align: middle;
+}
+
+.question-bottom-box {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 20px;
+    padding-top: 10px;
+    border-top: 1px solid #0F3360;
+}
+
+.question-bottom-box > div > span {
+    font-size: 16px;
+}
+
+.surveypage-buttons {
+    float: right;
+    margin-right: 50px;
+}
+
+.surveypage-cancel-button, .surveypage-submit-button {
+    width: 80px;
+    height: 30px;
+    border-radius: 8px;
+
+    background-color: #154888;
+
+    font-size: 14px;
+    color: white;
+    cursor: pointer;
+}

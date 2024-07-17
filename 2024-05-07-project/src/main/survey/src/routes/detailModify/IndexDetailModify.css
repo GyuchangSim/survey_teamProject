@@ -1,0 +1,183 @@
+/* 2024.5.16 최소윤
+   공지사항 수정 */
+.container {
+    display: flex;
+    flex-direction: column;
+}
+  
+  /* 그라데이션 바 */
+.surveyBox-modify{
+    display: flex;
+    margin-top : 35px;
+  
+    width : 874px;
+    height : 60px;
+  
+    border-bottom-right-radius : 20px;
+    background : linear-gradient(to right,#0F3360,#1F69C6);
+    color : white;
+}
+  
+  /* 그라데이션 바 안 박스들 */
+.infoBox-modify {
+    padding-top: 15px;
+  
+    text-align: center;
+    justify-content: center;
+  
+    width: 200px;
+    height: 100%;
+    
+    border-right: 1px solid white;
+}
+
+.infoBox-modify > span {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.houseImg-modify {
+    width: 40px;
+    height: 40px;
+}
+  
+/* 마지막 박스 오른쪽 흰줄 안보이게*/
+.surveyBox-modify :last-child {
+    border-right: none;
+    
+}
+  
+main {
+    display: flex;
+    margin-top: 30px;
+}
+
+/* main-box */
+.notice-detail-modify-main{
+    margin-left: 44px;
+
+    width: 800px;
+    height: 700px;
+
+    border: 1px solid black;
+    border-radius: 8px;
+}
+  
+ /* main-box-top */
+.notice-detail-modify-main-top {
+    display: flex;
+    justify-content: space-between;
+
+    height: 70px;
+    background-color: #0F3360;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.notice-detail-modify-main-top-left {
+    margin: 25px 40px;
+}
+  
+  
+.notice-detail-modify-main-top-right {
+    margin: 25px 47px;
+    display: flex;
+    align-items: center;
+}
+  
+.notice-detail-modify-main-top-right > img {
+    width: 74px;
+    height: 43px;
+}
+  
+.notice-detail-modify-text {
+  margin-left : 5px;
+
+  color: white;
+
+  font-size : 18px;
+  font-weight : 700;
+}
+
+/* 공지사항 하늘색 큰박스 */
+.notice-detail-modify-main-main {
+    margin: auto;
+    margin-top: 24px;
+
+    width: 750px;
+    height: 580px;
+
+    border: 1px solid black;
+    border-radius: 8px;
+
+    background-color: #F0F7FF;
+}
+
+/* 공지사항 들어가는 박스 */
+.notice-detail-modify {
+    margin: auto;
+    margin-top: 25px;
+
+    width: 700px;
+    height: 457px;
+    border: 1px solid black;
+    border-radius: 8px;
+
+    background-color: white;
+
+}
+
+/* 공지사항 수정제목 */
+.notice-detail-modify-title {
+    padding: 10px;
+
+    height: 57px;
+    border-bottom: 1px solid black;
+}
+
+.notice-detail-modify-title>input {
+    border: none;
+    outline: none;
+
+    width: 680px;
+    font-size: 24px;
+}
+
+/* 공지사항 수정내용 */
+.notice-detail-modify-content {
+    padding: 10px;
+
+    height: 400px;
+}
+
+.notice-detail-modify-content>textarea {
+   border: none;
+   outline: none;
+
+   width: 680px;
+   height: 380px;
+   resize: none;
+
+   font-size: 16px;
+}
+
+/* 수정 완료버튼 */
+
+.complete-button{
+    float: right;
+
+    margin-top: 20px;
+    margin-right: 32px;
+    margin-left: 10px;
+
+    width: 130px;
+    height: 50px;
+    border-radius: 8px;
+
+    background-color: #154888;
+
+    font-size: 15px;
+    color: white;
+    cursor: pointer;
+}
+

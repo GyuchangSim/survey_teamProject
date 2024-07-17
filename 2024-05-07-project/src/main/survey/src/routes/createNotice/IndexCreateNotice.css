@@ -1,0 +1,185 @@
+ /* 2024.5.16 최소윤 */
+ /* 공지사항 등록 */
+ 
+.container {
+    display: flex;
+    flex-direction: column;
+}
+  
+/* 그라데이션 바 */
+.surveyBox-create {
+    display: flex;
+    margin-top : 35px;
+  
+    width : 874px;
+    height : 60px;
+  
+    border-bottom-right-radius : 20px;
+    background : linear-gradient(to right,#0F3360,#1F69C6);
+    color : white;
+}
+  
+/* 그라데이션 바 안 박스들 */
+.infoBox-create {
+    padding-top: 15px;
+  
+    text-align: center;
+    justify-content: center;
+  
+    width: 200px;
+    height: 100%;
+    
+    border-right: 1px solid white;
+}
+
+.infoBox-create > span {
+    font-size: 20px;
+    font-weight: 700;
+}
+
+.houseImg-create {
+    width: 40px;
+    height: 40px;
+}
+  
+/* 마지막 박스 오른쪽 흰줄 안보이게*/
+.surveyBox-create :last-child {
+    border-right: none;
+}
+  
+main {
+    display: flex;
+    margin-top: 30px;
+}
+
+/* main-box */
+.notice-create-main{
+    margin-left: 80px;
+
+    width: 800px;
+    height: 700px;
+
+    border: 1px solid black;
+    border-radius: 8px;
+}
+  
+ /* main-box-top */
+.notice-create-main-top {
+    display: flex;
+    justify-content: space-between;
+
+    height: 70px;
+    background-color: #0F3360;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+}
+
+.notice-create-main-top-left {
+    margin: 25px 47px;
+}
+  
+  
+.notice-create-main-top-right {
+    margin: 25px 47px;
+    display: flex;
+    align-items: center;
+}
+  
+.notice-create-main-top-right > img {
+    width: 74px;
+    height: 43px;
+}
+  
+.notice-create-text {
+  margin-left : 5px;
+
+  color: white;
+  font-size : 18px;
+  font-weight : 700;
+}
+
+/* 공지사항 하늘색 큰박스 */
+.notice-create-main-main {
+    margin: auto;
+    margin-top: 24px;
+
+    width: 750px;
+    height: 580px;
+
+    border: 1px solid black;
+    border-radius: 8px;
+
+    background-color: #F0F7FF;
+}
+
+/* 공지사항 들어가는 박스 */
+.notice-create {
+    margin: auto;
+    margin-top: 25px;
+
+    width: 700px;
+    height: 457px;
+    border: 1px solid black;
+    border-radius: 8px;
+
+    background-color: white;
+
+}
+
+/* 공지사항 작성제목 */
+.notice-create-title {
+    padding: 10px;
+
+    height: 57px;
+    border-bottom: 1px solid black;
+}
+
+.notice-create-title>input {
+    border: none;
+    outline: none;
+
+    width: 680px;
+    font-size: 24px;
+}
+
+/* 공지사항 작성내용 */
+.notice-create-content {
+    padding: 10px;
+    height: 400px;
+}
+
+.notice-create-content>textarea {
+   border: none;
+   outline: none;
+
+   width: 680px;
+   height: 380px;
+   resize: none;
+
+   font-size: 16px;
+}
+
+/* 작성취소,완료 버튼 */
+
+.notice-create-buttons {
+   float: right;
+
+   margin-top: 20px;
+   margin-right: 32px;
+}
+
+.create-cancle-button, .create-complete-button {
+    margin-left: 10px;
+
+    width: 100px;
+    height: 50px;
+    border-radius: 8px;
+
+    background-color: #154888;
+
+    font-size: 15px;
+    color: white;
+
+    cursor: pointer;
+}
+

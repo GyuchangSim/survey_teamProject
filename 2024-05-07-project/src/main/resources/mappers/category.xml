@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.surveyProject.project.domain.survey.category.CategoryRepository">
+	  <update id="saveCategoryCount" parameterType="com.surveyProject.project.domain.survey.category.Category">
+		  update 
+		  	category_dtl 
+		  set
+		  	category_count = category_count + 1
+		  where 
+		  	 category_code = #{category_code} 
+	  </update>
+	  
+	  <select id="getCategory" parameterType="integer" resultType="com.surveyProject.project.domain.survey.category.Category">
+		  select 
+		  	category_code,
+		  	category_name 
+		  from 
+		  	category_dtl 
+		  order by 
+		  	category_count desc 
+		  limit 
+		  	#{page}, #{category_count}
+	  </select>
+  </mapper>

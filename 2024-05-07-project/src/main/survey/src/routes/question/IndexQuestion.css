@@ -1,0 +1,128 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+  
+  /* 그라데이션 바 */
+.surveyBox-question {
+  display: flex;
+
+  margin-top : 35px;
+
+  width : 874px;
+  height : 60px;
+  border-bottom-right-radius : 20px;
+  background : linear-gradient(to right,#0F3360,#1F69C6);
+  color : white;
+}
+  
+.infoBox-question {
+  padding-top: 15px;
+
+  width: 200px;
+  height: 100%;
+  border-left: 1px solid white;
+  text-align: center;
+  justify-content: center;
+}
+
+.infoBox-question > span {
+  font-size: 20px;
+  font-weight: 700;
+}
+  
+.surveyBox-question :last-child {
+  border-right: none;
+}
+  
+.houseImg-question{
+  width: 40px;
+  height: 40px;
+}
+  
+  
+main{
+  display: flex;
+  margin-top: 30px;
+}
+
+/* main-box */
+.question-box{
+  margin-left: 80px;
+
+  width: 850px;
+  height: 700px;
+
+  border: 1px solid black;
+  border-radius: 8px;
+}
+  
+  /* main-box-top */
+.question-box-top{
+  display: flex;
+  justify-content: space-between;
+
+  height: 70px;
+  background-color: #0F3360;
+  border-top-left-radius: 6px;
+  border-top-right-radius: 6px;
+}
+  
+.question-box-top-left{
+  margin: 25px 30px;
+}
+   
+.question-box-top-right {
+  margin: 20px 47px;
+  display: flex;
+  align-items: center;
+}
+  
+.question-box-top-right > img {
+  width: 74px;
+  height: 43px;
+}
+  
+.question-box-text {
+  margin-left : 5px;
+  color: white;
+  font-size : 18px;
+  font-weight : 700;
+}
+
+   /* main-box 안 */
+.question-main{
+  margin: auto;
+  margin-top: 24px;
+
+  width: 800px;
+  height: 580px;
+
+  border: 1px solid black;
+  border-radius: 8px;
+  background-color: #F0F7FF;
+}
+
+.question {
+  margin-left: 10px;
+
+  margin-top:  10px;
+  padding: 20px;
+  width: 750px;
+  height: 50px;
+}
+
+.question > span {
+  margin-left: 10px;
+  font-size: 14px;
+}
+
+.answer {
+  margin: 5px 20px;
+  width: 750px;
+  height: 50px;
+}
+
+.answer > span {
+  font-size: 14px;
+}

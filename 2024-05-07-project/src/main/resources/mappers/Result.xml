@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.surveyProject.project.domain.survey.result.ResultRepository">
+	
+	<select id="getResultByCode" parameterType="hashmap"
+	resultType="com.surveyProject.project.domain.survey.result.Result">
+		select
+			survey_code,
+			survey_title
+		from
+			survey_information
+		where
+			survey_code = #{survey_code};
+	</select>
+	<select id="getQuestionsByCode" parameterType="hashmap"
+	resultType="com.surveyProject.project.domain.survey.result.Questions">
+		select
+			question_code,
+			question_title,
+			detail_question
+		from
+			survey_question
+		where
+			survey_code = #{survey_code};
+	</select>
+	<select id="getAnswersByCode" parameterType="Integer" 
+	resultType="com.surveyProject.project.domain.survey.result.Answers">
+		select
+			answer_code,
+			survey_answer_short,
+			survey_answer_long,
+			detail_answer
+		from
+			survey_answer
+		where
+			question_code = #{question_code}
+	</select>
+</mapper>

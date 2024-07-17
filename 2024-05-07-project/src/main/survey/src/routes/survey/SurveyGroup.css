@@ -1,0 +1,131 @@
+/* 2024.5.20 최소윤 */
+
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.surveyBox-surveygroup {
+    display: flex;
+    margin-top : 35px;
+    
+    width : 874px;
+    height : 60px;
+    
+    border-bottom-right-radius : 20px;
+    background : linear-gradient(to right,#0F3360,#1F69C6);
+    color : white;
+}
+    
+.infoBox-surveygroup { 
+    padding-top: 15px;
+    
+    text-align: center;
+    justify-content: center;
+    
+    width: 200px;
+    height: 100%;
+    
+    border-right: 1px solid white;
+}
+    
+.infoBox-surveygroup > span {
+    font-size: 20px;
+    font-weight: 700;
+}
+    
+.houseImg-surveygroup {
+    width: 40px;
+    height: 40px;
+}
+
+.surveyBox-surveygroup :last-child {
+    border-right: none;
+}
+
+/* 모달창 */
+.modal-container{
+    display: block;
+    
+    width: 520px;
+    height: 320px;
+    background-color: white;
+    overflow-y: auto;
+    position: fixed;
+    right: auto;
+    left: 50%;
+    top: 50%;
+    /* padding: 5px; */
+    transform: translate(-50%, -50%);
+    z-index: 1011;
+    border-radius: 10px;
+
+
+    
+}
+
+.modal-overlay{
+position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5); /* 어두운 배경 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-code-main{
+    margin: 70px;
+}
+
+.modal-code-top{
+    padding-left: 20px;
+    border: 1px solid black;
+    height: 40px;
+
+    background-color: #0F3360;
+    color: white;
+
+}
+.modal-code-box{
+    
+    margin-top: 50px;
+    margin-left: 65px;
+    width: 400px;
+    height: 150px;
+    align-items: center;
+    display: block;
+    justify-content: center;
+    border: 1px solid black;
+}
+
+.modal-code-label{
+  padding-left: 120px;
+  display: block;
+  background-color: #0F3360;
+  color: white;
+  font-size: 16px;
+}
+
+.modal-code-input{
+    margin-left: 110px;
+    border: none;
+    border-bottom: 2px solid black;
+
+}
+
+.modal-btn-box{
+    display: flex;
+}
+
+.modal-code-btn{
+    margin-top: 20px;
+    margin-left: 220px;
+    width: 100px;
+    height: 30px;
+    background-color: #0F3360;
+    color: white;
+    
+}

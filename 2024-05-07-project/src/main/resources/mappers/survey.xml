@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- inser into문을 쓸 때 values를 쓰면 다 적어야 하고 values를 안쓰면 auto increment 부분은 생략가능  -->
+
+<mapper namespace="com.surveyProject.project.domain.survey.survey.SurveyRepository">
+	
+	<!--   설문조사 검색 기능-->
+   <select id="getSearchList" parameterType="java.util.HashMap" resultType="com.surveyProject.project.domain.survey.survey.SurveyInformation">
+      SELECT * FROM survey_information WHERE survey_title LIKE '%${word}%' ;
+   </select>
+
+	<select id="checkFilterAndGetSurveyListR" parameterType="hashmap" resultType="com.surveyProject.project.domain.survey.survey.SurveyList">
+    SELECT
+        ai.user_code,
+        ai.survey_code,
+        ai.category_code,
+        si.survey_title,
+        si.survey_present_img,
+        ai.survey_per_money,
+        ai.survey_period_start,
+        ai.survey_period_stop
+    FROM 
+        apply_information ai
+        LEFT OUTER JOIN survey_information si ON (ai.survey_code = si.survey_code)
+    WHERE
+        1=1
+        <!-- 카테고리 필터 -->
+        <!-- collectioin값은 params라는 맵의 키값과 동일해야 함 -->
+        <if test="categoryCode != null and categoryCode.size() > 0">
+            and ai.category_code IN
+            <foreach item="category" collection="categoryCode" open="(" separator="," close=")">
+                #{category}
+            </foreach>
+        </if>
+        <!-- 성별 필터 -->
+        <if test="surveyTargetGender  != null and surveyTargetGender .size() > 0">
+            and si.survey_target_gender IN
+            <foreach item="gender" collection="surveyTargetGender " open="(" separator="," close=")">
+                ai.survey_target_gender LIKE CONCAT('%', #{gender}, '%')
+            </foreach>
+        </if>
+        <!-- 연령 필터 -->
+        <if test="surveyTargetAge  != null and surveyTargetAge .size() > 0">
+            and si.survey_target_age IN
+            <foreach item="age" collection="surveyTargetAge " open="(" separator="," close=")">
+                ai.survey_target_age LIKE CONCAT('%', #{age}, '%')
+            </foreach>
+        </if>
+        and si.survey_status = 2
+        and ai.survey_class = #{surveyClass}
+    ORDER BY
+        ai.survey_code
+    LIMIT
+        #{index}, #{contentCount}
+</select>
+	
+	 <!-- 설문조사 Start 페이지 + survey_password(post) -->
+	 <!-- 설문조사 "대상자가 아닙니다"  : 설문조사를 onclick했을 때 동작하는 것-->
+	 <!-- survey_password가 일치하지 않으면 데이터를 반환하지 않음 -->
+	 <!-- 아래 쿼리문은 특정 사용자의 성별과 연령대가 apply_information테이블의 survey_target_age와 survey_target_gender에 포함되어 있는 모든 설문조사(survey_code)를 찾음 -->
+	 <select id="checkSurveyPasswordAndTargetAndSurveyStartR" parameterType="hashmap" resultType="com.surveyProject.project.domain.survey.survey.SurveyStartComplete">
+		 SELECT
+		 	ai.survey_code,
+		 	si.survey_title,
+		 	ai.survey_per_money,
+		 	ai.survey_period_start,
+		 	ai.survey_period_stop,
+		 	ai.survey_target_gender,
+		 	ai.survey_target_age
+		 FROM
+		 	apply_information ai
+		 	LEFT OUTER JOIN survey_information si ON (ai.survey_code = si.survey_code)
+		 WHERE
+		 	ai.survey_code = #{surveyCode}
+		 	AND ai.survey_password = #{surveyPassword}
+		 	AND 
+		 	FIND_IN_SET(
+		 		(SELECT <!-- FIND_IN_SET함수는 첫번째 매개변수가 두번째 매개변수에 포함되어 있는지 확인 -->
+					CASE <!-- 밑 부분은 현재 날짜와 사용자의 생일 사이의 차이(즉, 사용자의 나이)를 계산하고 그 나이가 어떤 연령대에 속하는지 결정 -->
+						WHEN TIMESTAMPDIFF(YEAR, user_birth, CURDATE()) BETWEEN 10 AND 19 THEN "10"  <!-- YEAR: 차이를 계산할 단위를 지정, user_brith: 시작 날짜(사용자의 생일), CURDATE(): 종료 날짜를 지정(현재 날짜) -->
+						WHEN TIMESTAMPDIFF(YEAR, user_birth, CURDATE()) BETWEEN 20 AND 29 THEN "20"
+						WHEN TIMESTAMPDIFF(YEAR, user_birth, CURDATE()) BETWEEN 30 AND 39 THEN "30"
+						WHEN TIMESTAMPDIFF(YEAR, user_birth, CURDATE()) BETWEEN 40 AND 49 THEN "40"
+						WHEN TIMESTAMPDIFF(YEAR, user_birth, CURDATE()) BETWEEN 50 AND 59 THEN "50"
+						WHEN TIMESTAMPDIFF(YEAR, user_birth, CURDATE()) >= 60 THEN "60"
+					END as age <!-- CASE문의 결과를 쿼리의 다른 부분에서 참조할 수 있게 하기 위해 별칭을 age로 지정해준 것 -->
+				FROM
+					user_dtl
+				WHERE
+					user_code = #{userCode}), ai.survey_target_age) <!-- 여기서 survey_target_age는 FIND_IN_SET()함수의 두번째 매개변수 -->
+				AND 
+				FIND_IN_SET( <!-- 밑 부분은 사용자의 성별을 가져와 survey_target_gender안에 속하는지 확인 -->
+		        (SELECT
+		            user_gender
+		        FROM
+		            user_dtl
+		        WHERE
+		            user_code = #{userCode}), ai.survey_target_gender)
+		    AND NOT EXISTS (<!-- NOT EXISTS를 사용해 사용자가 이미 완료한 설문조사를 확인-->
+		    	SELECT 1 FROM survey_respondent
+				WHERE user_code = #{userCode} AND survey_code = #{surveyCode})    		
+	 </select>
+	 <!-- 위의 쿼리문은 각 클릭마다 데이터베이스에 쿼리를 실행하므로,
+	 사용자가 설문조사 목록을 클릭할 때마다 데이터베이스에 부담을 줄 수 있다.
+	 이를 최적화하기 위해, 설문조사 목록을 처음 불러올 때
+	 사용자의 연령대와 성별에 맞는 설문조사만 불러오는 방법을 고려해보아야 한다.
+	 이렇게 하면 사용자가 설문조사를 클릭할 때마다 쿼리를 실행할 필요가 없고
+	 사용자가 클릭한 설문조사가 자신의 연령대와 성별에 맞지 않는 경우에만
+	 모달창을 띄우는 로직을 클라이언트 측에서 처리할 수 있다.
+	 이렇게 하면 서버의 부하를 줄일 수 있다. -->
+
+	<!--지영 작성-->
+	<select id="SurveyComplete" parameterType="Integer"
+	resultType="com.surveyProject.project.domain.survey.survey.SurveyComplete">
+		select
+			ai.survey_code,
+			si.survey_title,
+			ai.survey_per_money
+		from
+			apply_information ai 
+			left outer join survey_information si on(ai.survey_code = si.survey_code)
+		where
+			ai.survey_code = #{survey_code}
+	</select>
+	<update id="updateSurveyCompleteSurvey" parameterType="Integer">
+		update
+			survey_information
+		set
+			participant_count = participant_count + 1
+		where
+			survey_code = #{survey_code};
+	</update>
+	<update id="updateSurveyCompleteUser" parameterType="hashmap">
+		update
+			user_dtl
+		set
+			user_money = user_money + #{user_money}
+		where
+			user_code = #{user_code};
+	</update>
+	<insert id="updateSurveyCompleteRespondent" parameterType="hashmap">
+		insert into
+			survey_respondent
+		value
+			(
+			0, 
+			#{survey_code}, 
+			#{user_code}, 
+			now()
+			);
+	</insert>
+	
+	<update id="updateSurveyStatusR" parameterType="hashmap">
+		UDATE
+			survey_information si
+			left outer join apply_information ai ON(si.survey_code = ai.survey_code)
+		SET
+			si.survey_status =
+			CASE
+				WHEN ai.participant_max >= si.participant_count then "4"
+				WHEN now() >= ai.surey_period_stop then "3"
+
+				else si.survey_status	<!-- 위의 것들 중 아무것도 해당되지 않으면 survey_status는 그대로 유지됨 -->
+			END	
+		WHERE
+			si.survey_code = #{survey_code}
+	</update>
+	<!-- 설문조사 Complete 페이지 update 쿼리문 -->
+	<!-- update 쿼리문 -->
+
+	<!--	설문조사 디테일-->
+	<select id="getSurveyDetailTitle" parameterType="Integer" resultType="com.surveyProject.project.domain.survey.survey.SurveyInformation">
+		SELECT survey_code, survey_title, survey_content FROM survey_information
+		WHERE survey_code = #{surveyCode};
+	</select>
+	<select id="getSurveyDetailQuestion" parameterType="Integer" resultType="com.surveyProject.project.domain.survey.survey.SurveyInformation">
+		SELECT question_code, question_title, detail_question ,question_essential, select_type FROM survey_question
+		WHERE survey_code = #{surveyCode};
+	</select>
+	<select id="getSurveyDetailOption" parameterType="Integer" resultType="com.surveyProject.project.domain.survey.survey.SurveyInformation">
+		SELECT option_code, question_code, option_content FROM question_choice
+		WHERE question_code = #{question_code};
+	</select>
+
+
+
+	<select id="getTopSurvey" resultType="com.surveyProject.project.web.dto.surveypage.surveylist.TopSurveyResDto">
+		SELECT survey_title,
+				survey_code
+		FROM survey_information
+		ORDER BY participant_count DESC
+		LIMIT 3;
+
+	</select>
+
+<!--	게시물 전체 불러오기-->
+	 <select id="getSurveyList"  resultType="com.surveyProject.project.domain.survey.survey.SurveyList">
+		 SELECT si.survey_code,
+
+			 si.survey_title,
+			 ai.survey_per_money,
+			 ai.survey_period_start,
+			 ai.survey_period_stop,
+			 ai.category_code,
+			 ai.survey_target_gender,
+			 ai.survey_target_age ,
+
+			 cd.category_name
+		 FROM survey_information si
+		 INNER JOIN apply_information ai
+		 ON si.survey_code = ai.survey_code
+		 INNER JOIN category_dtl cd
+		 ON ai.category_code = cd.category_code
+		 WHERE ai.survey_class = '개인'
+		 ;
+
+	 </select>
+	<select id="getSurveyGroupList" resultType="com.surveyProject.project.domain.survey.survey.SurveyList">
+		SELECT si.survey_code,
+		si.survey_title,
+		ai.application_class,
+		ai.survey_per_money,
+		ai.survey_period_start,
+		ai.survey_period_stop,
+		ai.category_code,
+		ai.survey_target_gender,
+		ai.survey_target_age,
+		ai.survey_password,
+		cd.category_name
+		FROM survey_information si
+		INNER JOIN apply_information ai
+		ON si.survey_code = ai.survey_code
+		INNER JOIN category_dtl cd
+		ON ai.category_code = cd.category_code
+		WHERE ai.survey_class = '단체' and si.survey_status = 2 ;
+	</select>
+	
+	<select id="getSurveyStart" parameterType="integer" resultType="com.surveyProject.project.domain.survey.survey.SurveyList">
+		select 
+			si.survey_title,
+			ai.survey_period_start,
+			ai.survey_period_stop,
+			ai.survey_per_money
+		from 
+			apply_information ai left outer join survey_information si on(ai.survey_code = si.survey_code)
+		where 
+			ai.survey_code = #{survey_code} AND ai.survey_class = '개인'
+	</select>
+	
+	<select id="getSurveyGroupStart" parameterType="integer" resultType="com.surveyProject.project.domain.survey.survey.SurveyList">
+		select 
+			si.survey_title,
+			ai.survey_period_start,
+			ai.survey_period_stop
+		from 
+			apply_information ai left outer join survey_information si on(ai.survey_code = si.survey_code)
+		where
+			ai.survey_code = #{survey_code} AND ai.survey_class = '단체'
+	</select>
+	<select id="getGroupPwd" parameterType="integer" resultType="com.surveyProject.project.domain.survey.survey.SurveyList">
+		SELECT si.survey_code,
+		si.survey_title,
+		ai.application_class,
+		ai.survey_per_money,
+		ai.survey_period_start,
+		ai.survey_period_stop,
+		ai.category_code,
+		ai.survey_target_gender,
+		ai.survey_target_age,
+		ai.survey_password,
+		cd.category_name
+		FROM survey_information si
+		INNER JOIN apply_information ai
+		ON si.survey_code = ai.survey_code
+		INNER JOIN category_dtl cd
+		ON ai.category_code = cd.category_code
+		WHERE ai.survey_code = #{surveyCode};
+	</select>
+	
+</mapper>
